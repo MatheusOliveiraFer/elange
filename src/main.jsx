@@ -8,12 +8,20 @@ import {
 import Routes from './routes/routes';
 import ErrorPage from "./error-page";
 import ThemeContextProvider from './hooks/useTheme';
+import MainPage from './pages/mainPage';
+import { Outlet } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Routes />,
-    errorElement: <ErrorPage />
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/index",
+        element: <MainPage />,
+      },
+    ],
   },
 ]);
 
