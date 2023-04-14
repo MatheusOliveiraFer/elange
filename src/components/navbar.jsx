@@ -7,17 +7,15 @@ import { useTheme } from "../hooks/useTheme";
 import useBoolean from "../hooks/useBoolean";
 import Menu from "./menu";
 import MenuActions from "./menu-actions";
-import useMediaQuery from "../hooks/useMediaQuery";
 
 const Navbar = () => {
 
     const { theme } = useTheme()
     const {value: showMenu, toggle: toogleMenu } = useBoolean(false);
-    const isMobile = useMediaQuery('(min-width: 768px)');
     
     return (
         <>
-            <nav className="bg-white dark:bg-black border-gray-200 fixed">
+            <nav className="bg-white dark:bg-black border-gray-200 fixed top-0 z-0">
                 <div className="w-screen flex flex-wrap items-center justify-between px-5 py-4 md:py-8">
                     <div className="w-2/6">
                         <a href="#" className="flex items-center">

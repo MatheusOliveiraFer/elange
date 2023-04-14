@@ -1,5 +1,6 @@
 import { useTheme } from "../hooks/useTheme";
 import BackgroundWhiteElange from "../assets/img/svg/elange-bg-white.svg";
+import BackgroundMobileWhiteElange from "../assets/img/svg/elange-bg-mobile-white.svg";
 import BackgroundBlackElange from "../assets/img/svg/elange-bg-black.svg";
 import IconInstagramBlack from "../assets/icon/icon-instagram-black.svg";
 import IconInstagramWhite from "../assets/icon/icon-instagram-white.svg";
@@ -10,18 +11,33 @@ import IconSoundCloudWhite from "../assets/icon/icon-soundcloud-white.svg";
 import IconYoutubeBlack from "../assets/icon/icon-youtube-black.svg";
 import IconYoutubeWhite from "../assets/icon/icon-youtube-white.svg";
 
+import useMediaQuery from "../hooks/useMediaQuery";
+
 const MainPage = () => {
+
     const { theme } = useTheme();
+    const isMobile = useMediaQuery('(max-width: 768px)');
+
     return (
-        <div className={`w-full h-screen ${theme === "light" ? "bg-white" : "bg-black"} flex flex-col justify-center items-center`}>
-            <img src={theme === "light" ? BackgroundWhiteElange : BackgroundBlackElange} className="w-[60%] h-[50%]" alt="Background Elange" />
-            <div className="w-[400px] h-14 flex justify-around absolute mt-[40%]">
-                <img src={theme === "light" ? IconInstagramBlack : IconInstagramWhite} className="w-[90%] h-[90%]" alt="Icon Instagram" />
-                <img src={theme === "light" ? IconSpotifyBlack : IconSpotifyWhite} className="w-[90%] h-[90%]" alt="Icon Instagram" />
-                <img src={theme === "light" ? IconSoundCloudBlack : IconSoundCloudWhite} className="w-[90%] h-[90%]" alt="Icon Instagram" />
-                <img src={theme === "light" ? IconYoutubeBlack : IconYoutubeWhite} className="w-[90%] h-[90%]" alt="Icon Instagram" />
+        <section className={`flex flex-col h-screen w-screen ${theme === "light" ? "bg-white" : "bg-black"}`}>
+            <div className="mt-40 w-full h-auto flex items-center justify-center">
+                {
+                    isMobile ? (
+                        <img src={BackgroundMobileWhiteElange} className="w-[70%]" alt="Background Elange" />
+                    ) : (
+                        <img src={theme === "light" ? BackgroundWhiteElange : BackgroundBlackElange} className="h-auto w-[50%] lg:w-[65%] lg:h-[70%]" alt="Background Elange" />
+                    )
+                }
             </div>
-        </div>
+            <div className="w-full h-auto flex items-center justify-center">
+                <div className="block w-[300px] md:max-2xl:w-[400px] h-14 flex justify-between mt-24">
+                    <img src={theme === "light" ? IconInstagramBlack : IconInstagramWhite} className="h-10 md:max-2xl:h-12" alt="Icon Instagram" />
+                    <img src={theme === "light" ? IconSpotifyBlack : IconSpotifyWhite} className="h-10 md:max-2xl:h-12" alt="Icon Instagram" />
+                    <img src={theme === "light" ? IconSoundCloudBlack : IconSoundCloudWhite} className="h-10 md:max-2xl:h-12" alt="Icon Instagram" />
+                    <img src={theme === "light" ? IconYoutubeBlack : IconYoutubeWhite} className="h-10 md:max-2xl:h-12" alt="Icon Instagram" />
+                </div>
+            </div>
+        </section>
     );
 }
 export default MainPage;

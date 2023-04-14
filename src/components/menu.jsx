@@ -8,7 +8,7 @@ const Menu = ({ toogleMenu, showMenu }) => {
     const { theme } = useTheme()
 
     return (
-        <div className={`transition-all duration-900 ${showMenu ? "z-10 opacity-100" : "-z-10 opacity-0" } h-screen w-full bg-white dark:bg-black absolute flex items-center justify-center`}>
+        <div className={`transition-all duration-1000 ${showMenu ? "z-10 h-screen opacity-100" : "h-0 -z-10 opacity-90" } w-full bg-white dark:bg-black absolute top-0 flex items-center justify-center`}>
             <span onClick={toogleMenu} className="cursor-pointer absolute right-10 top-12">
                 <img src={theme === "light" ? IconCloseBlack : IconCloseWhite} className="w-4 h-4" />
             </span>
